@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: crm
+    database: DWH_DEV
+    schema: BRONZE
+    tables:
+      - name: BRZ_CRM_CUSTOMER
+      - name: BRZ_CRM_PRODUCT
+      - name: BRZ_CRM_SALES
