@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: erp
+    database: DWH_DEV
+    schema: BRONZE
+    tables:
+      - name: BRZ_ERP_CUSTOMER
+      - name: BRZ_ERP_LOCATION
+      - name: BRZ_ERP_PRODUCT_CATEGORY
