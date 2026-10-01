@@ -1,0 +1,114 @@
+/*
+===============================================================================
+Analyse des volumes et de la répartition des données
+===============================================================================
+Objectif :
+    - Quantifier les données et analyser leur répartition selon différentes
+      dimensions.
+    - Identifier la distribution des clients, produits et ventes.
+    - Analyser les performances commerciales par catégorie et par client.
+
+Fonctions SQL utilisées :
+    - Fonctions d'agrégation : SUM(), COUNT(), AVG()
+    - GROUP BY
+    - ORDER BY
+    - LEFT JOIN
+===============================================================================
+*/
+
+
+-- ============================================================================
+-- 1. Nombre total de clients par pays
+-- ============================================================================
+
+SELECT
+    l.country,
+    COUNT(c.customer_key) AS total_customers
+FROM DWH_DEV.GOLD.DIM_CUSTOMER c
+LEFT JOIN DWH_DEV.SILVER.INT_LOCATION l
+    ON l.customer_id = c.customer_id
+GROUP BY l.country
+ORDER BY total_customers DESC;
+
+
+-- ============================================================================
+-- 2. Nombre total de clients par genre
+-- ============================================================================
+
+SELECT
+    gender,
+    COUNT(customer_key) AS total_customers
+FROM DWH_DEV.GOLD.DIM_CUSTOMER
+GROUP BY gender
+ORDER BY total_customers DESC;
+
+
+-- ============================================================================
+-- 3. Nombre total de produits par catégorie
+-- ============================================================================
+
+SELECT
+    category,
+    COUNT(product_id) AS total_products
+FROM DWH_DEV.GOLD.DIM_PRODUCT
+GROUP BY category
+ORDER BY total_products DESC;
+
+
+-- ============================================================================
+-- 4. Coût moyen des produits par catégorie
+-- ============================================================================
+
+SELECT
+    category,
+    AVG(product_cost) AS avg_product_cost
+FROM DWH_DEV.GOLD.DIM_PRODUCT
+GROUP BY category
+ORDER BY avg_product_cost DESC;
+
+
+-- ============================================================================
+-- 5. Chiffre d'affaires total par catégorie
+-- ============================================================================
+
+SELECT
+    p.category,
+    SUM(f.sales_amount) AS total_revenue
+FROM DWH_DEV.GOLD.FCT_SALES f
+LEFT JOIN DWH_DEV.GOLD.DIM_PRODUCT p
+    ON p.product_id = f.product_id
+GROUP BY p.category
+ORDER BY total_revenue DESC;
+
+
+-- ============================================================================
+-- 6. Chiffre d'affaires total par client
+-- ============================================================================
+
+SELECT
+    c.customer_key,
+    c.first_name,
+    c.last_name,
+    SUM(f.sales_amount) AS total_revenue
+FROM DWH_DEV.GOLD.FCT_SALES f
+LEFT JOIN DWH_DEV.GOLD.DIM_CUSTOMER c
+    ON c.customer_id = f.customer_id
+GROUP BY
+    c.customer_key,
+    c.first_name,
+    c.last_name
+ORDER BY total_revenue DESC;
+
+
+-- ============================================================================
+-- 7. Répartition des quantités vendues par pays
+-- ============================================================================
+
+SELECT
+    l.country,
+    SUM(f.quantity) AS total_sold_items
+FROM DWH_DEV.GOLD.FCT_SALES f
+LEFT JOIN DWH_DEV.SILVER.INT_LOCATION l
+    ON l.customer_id = f.customer_id
+GROUP BY l.country
+ORDER BY total_sold_items DESC;
