@@ -1,0 +1,38 @@
+/*
+===============================================================================
+Analyse de la contribution au total (Part-to-Whole Analysis)
+===============================================================================
+Objectif :
+    - Comparer les ventes entre les différentes catégories de produits.
+    - Mesurer la contribution de chaque catégorie au chiffre d'affaires global.
+    - Identifier la répartition du chiffre d'affaires par catégorie.
+
+Fonctions SQL utilisées :
+    - SUM() : calculer les ventes par catégorie.
+    - SUM() OVER() : calculer le chiffre d'affaires total.
+    - ROUND() : arrondir les pourcentages.
+    - NULLIF() : éviter une division par zéro.
+===============================================================================
+*/
+
+-- Quelles catégories contribuent le plus au chiffre d'affaires global ?
+
+WITH category_sales AS (
+
+    SELECT
+        p.category,
+        SUM(f.sales_amount) AS total_sales
+    FROM DWH_DEV.GOLD.FCT_SALES f
+    LEFT JOIN DWH_DEV.GOLD.DIM_PRODUCT p
+        ON p.product_id = f.product_id
+    GROUP BY p.category
+
+)
+
+SELECT
+    category,
+    total_sales,
+    SUM(total_sales) OVER () AS overall_sales,
+    ROUND((total_sales / NULLIF(SUM(total_sales) OVER (), 0)) * 100,2) AS percentage_of_total
+FROM category_sales
+ORDER BY total_sales DESC;
