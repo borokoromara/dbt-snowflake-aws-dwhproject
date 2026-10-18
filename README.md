@@ -68,9 +68,9 @@ sales_details.csv
 
 **ERP** Les données ERP contiennent :
 
-**•** Informations clients complémentaires
-**•** Localisation des clients
-**•** Catégories produits
+**•** Informations clients complémentaires. 
+**•** Localisation des clients. 
+**•** Catégories produits. 
 
 Fichiers :
 
