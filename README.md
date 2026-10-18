@@ -68,9 +68,9 @@ sales_details.csv
 
 **ERP** Les données ERP contiennent :
 
-**•** Informations clients complémentaires. 
-**•** Localisation des clients. 
-**•** Catégories produits. 
+**•** Informations clients complémentaires.  
+**•** Localisation des clients.  
+**•** Catégories produits.
 
 Fichiers :
 
@@ -180,26 +180,26 @@ int_sales
 
 **int_customer** Le modèle client permet notamment de :
 
-**•** filtrer les clés clients invalides ;
-**•** supprimer les doublons ;
-**•** conserver l'enregistrement le plus récent ;
-**•** convertir les types ;
-**•** harmoniser les informations CRM et ERP ;
-**•** normaliser le genre ;
+**•** filtrer les clés clients invalides ;  
+**•** supprimer les doublons ;  
+**•** conserver l'enregistrement le plus récent ;  
+**•** convertir les types ;  
+**•** harmoniser les informations CRM et ERP ;  
+**•** normaliser le genre ;  
 **•** traiter les dates de naissance invalides.
 
 **int_product** Le modèle produit permet notamment de :
 
-**•** convertir les types ;
-**•** conserver les différentes versions des produits ;
-**•** rattacher les catégories ERP ;
+**•** convertir les types ;  
+**•** conserver les différentes versions des produits ;  
+**•** rattacher les catégories ERP ;  
 **•** gérer les produits sans catégorie correspondante.
 
 **int_sales** Le modèle des ventes permet notamment de :
 
-**•** convertir les dates YYYYMMDD ;
-**•** convertir les mesures numériques ;
-**•** rattacher les ventes aux versions produits applicables ;
+**•** convertir les dates YYYYMMDD ;  
+**•** convertir les mesures numériques ;  
+**•** rattacher les ventes aux versions produits applicables ;  
 **•** conserver une ligne par ligne de vente source.
 
 Le rattachement produit utilise la date de commande et la version produit disponible à cette date.
@@ -299,11 +299,11 @@ Erreurs       : 0
 
 Les contrôles réalisés couvrent notamment :
 
-**•** unicité des clients ;
-**•** unicité des produits ;
-**•** unicité des lignes de ventes ;
-**•** présence des clés obligatoires ;
-**•** intégrité référentielle entre les ventes et les dimensions ;
+**•** unicité des clients ;  
+**•** unicité des produits ;  
+**•** unicité des lignes de ventes ;  
+**•** présence des clés obligatoires ;  
+**•** intégrité référentielle entre les ventes et les dimensions ;  
 **•** intégrité référentielle des catégories produits.
 
 ## **Sécurité**
@@ -312,14 +312,14 @@ Le projet applique plusieurs principes de sécurité.
 
 ### **AWS**
 
-**•** Utilisation d'une IAM Role pour l'accès Snowflake → S3.
-**•** Permissions limitées à la lecture des données nécessaires.
+**•** Utilisation d'une IAM Role pour l'accès Snowflake → S3.  
+**•** Permissions limitées à la lecture des données nécessaires.  
 **•** Aucun secret AWS dans le dépôt Git.
 
 ### **Snowflake**
 
-**•** Séparation des couches RAW, BRONZE, SILVER et GOLD.
-**•** Utilisation d'une Storage Integration pour l'accès S3.
+**•** Séparation des couches RAW, BRONZE, SILVER et GOLD.  
+**•** Utilisation d'une Storage Integration pour l'accès S3.  
 **•** Séparation des environnements DEV et PROD prévue dans l'architecture.
 
 ### **Git**
@@ -431,15 +431,15 @@ Le pipeline DEV est donc actuellement validé de bout en bout.
 
 Les prochaines étapes possibles du projet sont :
 
-**•** mise en place de l'environnement PROD ;
-**•** CI/CD avec GitHub Actions ;
-**•** automatisation de l'ingestion S3 ;
-**•** orchestration des traitements ;
-**•** monitoring et observabilité ;
-**•** modèles dbt incrémentaux ;
-**•** documentation dbt générée automatiquement ;
-**•** création d'un dashboard BI ;
-**•** mise en place de tests supplémentaires ;
+**•** mise en place de l'environnement PROD ;  
+**•** CI/CD avec GitHub Actions ;  
+**•** automatisation de l'ingestion S3 ;  
+**•** orchestration des traitements ;  
+**•** monitoring et observabilité ;  
+**•** modèles dbt incrémentaux ;  
+**•** documentation dbt générée automatiquement ;  
+**•** création d'un dashboard BI ;  
+**•** mise en place de tests supplémentaires ;  
 **•** optimisation des coûts et performances Snowflake.
 
 ## **Objectif du projet**
