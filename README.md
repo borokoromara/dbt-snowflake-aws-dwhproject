@@ -35,21 +35,22 @@ dbt - GOLD
 BI / Analytics
 ```
 ### **Principes d'architecture**
+
 Le projet suit une architecture **Medallion** :
 
-**RAW** : données brutes issues de l'ingestion.
-**BRONZE** : Stocke les données brutes telles quelles, provenant des systèmes sources. Les données sont ingérées à partir de fichiers CSV.
-**SILVER** : nettoyage, typage, standardisation, déduplication et harmonisation des données.
-**GOLD** : Contient des données prêtes à l’emploi, modélisées selon un schéma en étoile, nécessaires au reporting et à l’analyse..
+**RAW** : données brutes issues de l'ingestion.  
+**BRONZE** : stockage des données brutes telles quelles, provenant des systèmes sources et ingérées à partir de fichiers CSV.  
+**SILVER** : nettoyage, typage, standardisation, déduplication et harmonisation des données.  
+**GOLD** : données prêtes à l'emploi, modélisées selon un schéma en étoile pour le reporting et l'analyse.
 
 ## **Technologies utilisées**
 
-**AWS S3** — stockage des fichiers sources.   
-**AWS IAM** — gestion des permissions et accès sécurisés. 
-**Snowflake** — Data Warehouse. 
-**dbt Core** — transformation et tests des données. 
-**Python** — environnement d'exécution. 
-**Git / GitHub** — versionnement du projet. 
+**AWS S3** — stockage des fichiers sources.  
+**AWS IAM** — gestion des permissions et sécurisation des accès.  
+**Snowflake** — Data Warehouse.  
+**dbt Core** — transformation et tests des données.  
+**Python** — environnement d'exécution.  
+**Git / GitHub** — versionnement du projet.
 
 ## **Sources de données**
 
