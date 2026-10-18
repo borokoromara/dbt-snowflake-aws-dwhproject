@@ -130,17 +130,18 @@ ERP_LOCATION
 ERP_PRODUCT_CATEGORY
 
 **BRONZE**
+
 La couche BRONZE contient les tables sources structurées utilisées comme point d'entrée stable pour dbt.
 
 Tables :
 
-BRZ_CRM_CUSTOMER
-BRZ_CRM_PRODUCT
-BRZ_CRM_SALES
+BRZ_CRM_CUSTOMER  
+BRZ_CRM_PRODUCT  
+BRZ_CRM_SALES  
 
-BRZ_ERP_CUSTOMER
-BRZ_ERP_LOCATION
-BRZ_ERP_PRODUCT_CATEGORY
+BRZ_ERP_CUSTOMER  
+BRZ_ERP_LOCATION  
+BRZ_ERP_PRODUCT_CATEGORY  
 
 # **Transformation avec dbt**
 
@@ -152,9 +153,9 @@ La couche staging fournit une interface stable entre les tables BRONZE et les tr
 
 Modèles CRM :
 
-stg_crm_customer
-stg_crm_product
-stg_crm_sales
+stg_crm_customer  
+stg_crm_product  
+stg_crm_sales  
 
 Modèles ERP :
 
@@ -173,11 +174,11 @@ et :
 La couche intermediate contient les transformations nécessaires à la préparation du modèle analytique.
 Modèles :
 
-int_customer
-int_product
-int_product_category
-int_location
-int_sales
+int_customer  
+int_product  
+int_product_category  
+int_location  
+int_sales  
 
 **int_customer** Le modèle client permet notamment de :
 
@@ -220,14 +221,14 @@ GOLD
 ## **Dimension client**
 dim_customer : Cette dimension contient les informations principales des clients :
 
-identifiant client ;
-clé client ;
-prénom ;
-nom ;
-statut marital ;
-genre ;
-date de naissance ;
-date de création.
+identifiant client ;  
+clé client ;  
+prénom ;  
+nom ;  
+statut marital ;  
+genre ;  
+date de naissance ;    
+date de création.  
 
 La clé métier principale est : customer_key
 
@@ -235,15 +236,15 @@ La clé métier principale est : customer_key
 
 dim_product: Cette dimension contient :
 
-identifiant produit ;
-clé produit ;
-nom produit ;
-coût ;
-ligne produit ;
-catégorie ;
-sous-catégorie ;
-maintenance ;
-dates de validité.
+identifiant produit ;  
+clé produit ;  
+nom produit ;  
+coût ;  
+ligne produit ;  
+catégorie ;  
+sous-catégorie ;  
+maintenance ;  
+dates de validité.  
 
 La clé technique utilisée pour identifier le produit est : product_id
 
@@ -251,13 +252,13 @@ La clé technique utilisée pour identifier le produit est : product_id
 fct_sales
 La table de faits contient les informations transactionnelles :
 
-commande ;
-produit ;
-client ;
-dates ;
-quantité ;
-prix ;
-montant des ventes.
+commande ;  
+produit ;  
+client ;  
+dates ;  
+quantité ;  
+prix ;  
+montant des ventes.  
 
 La clé technique de la ligne de vente est : sales_key
 
@@ -286,9 +287,9 @@ Cette décision permet de préserver la valeur métier provenant de la source.
 Des tests dbt sont définis sur les modèles intermédiaires et Gold.
 Les contrôles comprennent notamment :
 
-**•** not_null
-**•** unique
-**•** relationships
+**•** not_null  
+**•** unique  
+**•** relationships  
 
 ### **Résultats actuels**
 Modèles dbt : 14
@@ -327,11 +328,11 @@ Le projet applique plusieurs principes de sécurité.
 
 Les fichiers sensibles et fichiers générés sont exclus du dépôt :
 
-.env
-.venv/
-target/
-dbt_packages/
-logs/
+.env  
+.venv/  
+target/  
+dbt_packages/  
+logs/  
 
 ## **Structure du projet dbt**
 
@@ -411,20 +412,20 @@ Le pipeline dbt a été exécuté avec succès :
 dbt run
 **Résultat** :
 
-14 modèles
-14 réussis
-0 erreur
-0 warning
+14 modèles  
+14 réussis  
+0 erreur  
+0 warning  
 
 Les tests ont ensuite été exécutés avec :
 
 dbt test
 **Résultat** :
 
-28 tests
-28 réussis
-0 erreur
-0 warning
+28 tests  
+28 réussis  
+0 erreur  
+0 warning  
 
 Le pipeline DEV est donc actuellement validé de bout en bout.
 
