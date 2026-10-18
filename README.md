@@ -121,13 +121,13 @@ La couche RAW correspond aux données directement chargées depuis S3. Elle cons
 
 Tables :
 
-CRM_CUSTOMER
-CRM_PRODUCT
-CRM_SALES
+CRM_CUSTOMER  
+CRM_PRODUCT  
+CRM_SALES  
 
-ERP_CUSTOMER
-ERP_LOCATION
-ERP_PRODUCT_CATEGORY
+ERP_CUSTOMER  
+ERP_LOCATION  
+ERP_PRODUCT_CATEGORY  
 
 **BRONZE**
 
@@ -147,7 +147,7 @@ BRZ_ERP_PRODUCT_CATEGORY
 
 dbt est utilisé pour construire les couches **SILVER** et **GOLD**.
 
-##**Couche STAGING**
+## **Couche STAGING**
 
 La couche staging fournit une interface stable entre les tables BRONZE et les transformations dbt.
 
@@ -159,9 +159,9 @@ stg_crm_sales
 
 Modèles ERP :
 
-stg_erp_customer
-stg_erp_location
-stg_erp_product_category
+stg_erp_customer  
+stg_erp_location  
+stg_erp_product_category  
 
 Les modèles staging utilisent les sources dbt :
 
@@ -249,8 +249,7 @@ dates de validité.
 La clé technique utilisée pour identifier le produit est : product_id
 
 ## **Table de faits des ventes**
-fct_sales
-La table de faits contient les informations transactionnelles :
+fct_sales: la table de faits contient les informations transactionnelles :
 
 commande ;  
 produit ;  
@@ -261,7 +260,6 @@ prix ;
 montant des ventes.  
 
 La clé technique de la ligne de vente est : sales_key
-
 Elle est construite à partir de : order_number + product_key
 
 ### **Grain**
@@ -270,9 +268,9 @@ Le grain de fct_sales est : **Une ligne par ligne de vente source.**
 
 Le contrôle effectué sur les données confirme :
 
-60 398 lignes
-60 398 lignes de vente distinctes
-0 doublon sur order_number + product_key
+60 398 lignes  
+60 398 lignes de vente distinctes  
+0 doublon sur order_number + product_key  
 
 ### **Montant des ventes**
 
@@ -292,12 +290,12 @@ Les contrôles comprennent notamment :
 **•** relationships  
 
 ### **Résultats actuels**
-Modèles dbt : 14
-Tests dbt   : 28
+Modèles dbt : 14  
+Tests dbt   : 28  
 
-Tests réussis : 28 / 28
-Warnings      : 0
-Erreurs       : 0
+Tests réussis : 28 / 28  
+Warnings      : 0  
+Erreurs       : 0  
 
 Les contrôles réalisés couvrent notamment :
 
