@@ -44,12 +44,12 @@ Le projet suit une architecture **Medallion** :
 
 ## **Technologies utilisées**
 
-**AWS S3** — stockage des fichiers sources
-**AWS IAM** — gestion des permissions et accès sécurisés
-**Snowflake** — Data Warehouse
-**dbt Core** — transformation et tests des données
-**Python** — environnement d'exécution
-**Git / GitHub** — versionnement du projet
+**AWS S3** — stockage des fichiers sources.   
+**AWS IAM** — gestion des permissions et accès sécurisés. 
+**Snowflake** — Data Warehouse. 
+**dbt Core** — transformation et tests des données. 
+**Python** — environnement d'exécution. 
+**Git / GitHub** — versionnement du projet. 
 
 ## **Sources de données**
 
@@ -57,8 +57,8 @@ Le projet utilise deux sources principales.
 
 **CRM** Les données CRM contiennent :
 
-**•** Clients
-**•** Produits
+**•** Clients  
+**•** Produits  
 **•** Ventes
 
 Fichiers :
